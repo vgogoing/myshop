@@ -12,6 +12,12 @@
     <artifactId>shop</artifactId>
     <version>1.0.0</version>
     <name>shop-parent</name>
+    <modules>
+        <module>shop-product-api</module>
+        <module>shop-product-server</module>
+        <module>shop-order-api</module>
+        <module>shop-order-server</module>
+    </modules>
     <packaging>pom</packaging>
 
 
@@ -19,7 +25,7 @@
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-cloud.version>Spring Cloud 2022.0.0</spring-cloud.version>
+        <spring-cloud.version>2022.0.0</spring-cloud.version>
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
     </properties>
 
