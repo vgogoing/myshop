@@ -8,3 +8,8 @@ spring:
     url: jdbc:mysql://192.168.18.129:3306/shop-order?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
     password: root
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
