@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Random;
 
 
 @Service
@@ -30,11 +31,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 //        String url  = "http://localhost:8081/product/" + pid;
 //        Product product = restTemplate.getForObject(url, Product.class);
         List<ServiceInstance> instances = discoveryClient.getInstances("product-service");
-        ServiceInstance serviceInstance = instances.get(0);
+//        ServiceInstance serviceInstance = instances.get(0);
+        int i = new Random().nextInt(instances.size());
+        ServiceInstance serviceInstance = instances.get(i);
         String host = serviceInstance.getHost();
         int port = serviceInstance.getPort();
         String url = "http://" + host + ":" + port + "/product/" + pid;
         Product product = restTemplate.getForObject(url, Product.class);
+        System.out.println("从nacos获取地址-----------"+ url);
         order.setProductName(product.getName());
         order.setProductPrice(product.getPrice());
         order.setUid(uid);
