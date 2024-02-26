@@ -2,6 +2,7 @@ package com.example.server.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.domain.Order;
+import com.example.server.feign.ProductFeignService;
 import com.example.server.mapper.OrderMapper;
 import com.example.server.service.OrderService;
 import org.example.pojo.Product;
@@ -18,11 +19,14 @@ import java.util.Random;
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
 
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
 
     @Autowired
     private DiscoveryClient discoveryClient;
+
+    @Autowired
+    private ProductFeignService productFeignService;
 
     @Override
     public Order createOrder(Long pid, Long uid) {
@@ -41,8 +45,12 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 //        System.out.println("从nacos获取地址-----------"+ url);
 
         //使用ribbon的方式 带负载均衡
-        String url = "http://product-service/product/" + pid;
-        Product product = restTemplate.getForObject(url, Product.class);
+//        String url = "http://product-service/product/" + pid;
+//        Product product = restTemplate.getForObject(url, Product.class);
+
+        //使用feign远程接口调用
+        Product product = productFeignService.getById(pid);
+
         order.setProductName(product.getName());
         order.setProductPrice(product.getPrice());
         order.setUid(uid);
