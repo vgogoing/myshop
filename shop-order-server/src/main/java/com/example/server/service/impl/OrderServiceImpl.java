@@ -32,13 +32,17 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 //        Product product = restTemplate.getForObject(url, Product.class);
         List<ServiceInstance> instances = discoveryClient.getInstances("product-service");
 //        ServiceInstance serviceInstance = instances.get(0);
-        int i = new Random().nextInt(instances.size());
-        ServiceInstance serviceInstance = instances.get(i);
-        String host = serviceInstance.getHost();
-        int port = serviceInstance.getPort();
-        String url = "http://" + host + ":" + port + "/product/" + pid;
+//        int i = new Random().nextInt(instances.size());
+//        ServiceInstance serviceInstance = instances.get(i);
+//        String host = serviceInstance.getHost();
+//        int port = serviceInstance.getPort();
+//        String url = "http://" + host + ":" + port + "/product/" + pid;
+//        Product product = restTemplate.getForObject(url, Product.class);
+//        System.out.println("从nacos获取地址-----------"+ url);
+
+        //使用ribbon的方式 带负载均衡
+        String url = "http://product-service/product/" + pid;
         Product product = restTemplate.getForObject(url, Product.class);
-        System.out.println("从nacos获取地址-----------"+ url);
         order.setProductName(product.getName());
         order.setProductPrice(product.getPrice());
         order.setUid(uid);
