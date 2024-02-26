@@ -1,5 +1,9 @@
+
 server:
   port: 8091
+  tomcat:
+    threads:
+      max: 10 #tomcat的最大并发值修改为10
 spring:
   application:
     name: order-service
@@ -13,3 +17,14 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    sentinel:
+      web-context-unify: false
+
+      transport:
+        port: 8719 #跟控制台交流的端口,随意指定一个未使用的端口即可,默认为8719
+        dashboard: 127.0.0.1:8080 # 指定控制台服务的地址
+
+# 开启feign对Sentinel的支持
+feign:
+  sentinel:
+    enabled: true
