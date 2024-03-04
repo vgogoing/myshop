@@ -50,10 +50,22 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-<!--        &lt;!&ndash;nacos配置中心&ndash;&gt;-->
+        <!--nacos配置中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+
+<!--        nacos log back兼容性处理-->
 <!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
+<!--            <groupId>ch.qos.logback</groupId>-->
+<!--            <artifactId>logback-classic</artifactId>-->
+<!--            <version>1.4.5</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.nacos</groupId>-->
+<!--            <artifactId>logback-adapter</artifactId>-->
+<!--            <version>1.0.0</version>-->
 <!--        </dependency>-->
 
 <!--        <dependency>-->
@@ -74,7 +86,7 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
-<!--        <dependency>-->
+        <!--        <dependency>-->
 <!--            <groupId>com.alibaba.cloud</groupId>-->
 <!--            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>-->
 <!--        </dependency>-->

@@ -1,0 +1,21 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: product-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.18.129:3306/shop-product?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: root
+
+  cloud:
+    nacos:
+      config:
+        # 配置中心地址
+        server-addr: 127.0.0.1:8848
+          # 配置文件扩展名 data ID的名称就是application的name加file-extension service1.yaml
+          # 如果这里是properties文件，就设置为：properties，相对应配置文件扩展名 data ID就为service1.properties
+        file-extension: yaml
+          # 测试组，从nacos中获取
+        group: DEFAULT_GROUP
