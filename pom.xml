@@ -18,6 +18,7 @@
         <module>shop-order-api</module>
         <module>shop-order-server</module>
         <module>shop-gateway</module>
+        <module>nacos-config-example</module>
     </modules>
     <packaging>pom</packaging>
 
